@@ -23,11 +23,24 @@ public class FuncionarioService {
         );
     }
 
-//    public void aumentarSalarios(BigDecimal percentual) {
-//        funcionarios.forEach(
-//                funcionario -> funcionario.aumentarSalario(percentual)
-//        );
-//    }
+
+
+
+    public void aumentarSalario(List<Funcionario> funcionarios, BigDecimal percentual) {
+
+        BigDecimal porcentagem = BigDecimal.ONE.add(
+                percentual.divide(new BigDecimal("100"))
+        );
+
+        System.out.println("Fator: " + porcentagem);;
+        for (Funcionario funcionario : funcionarios) {
+            BigDecimal novoSalario = funcionario.getSalario()
+                    .multiply(porcentagem);
+
+            funcionario.setSalario(novoSalario);
+        }
+    }
+
 
     public Map<String, List<Funcionario>> agruparPorFuncao() {
         return funcionarios.stream()
@@ -102,5 +115,11 @@ public class FuncionarioService {
         }
     }
 
+    public static void removerFuncionario(List<Funcionario> funcionarios, String nome) {
+
+        funcionarios.removeIf(funcionario ->
+                funcionario.getNome().equalsIgnoreCase(nome)
+        );
+    }
 
 }

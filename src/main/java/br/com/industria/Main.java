@@ -8,8 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import static br.com.industria.service.FuncionarioService.removerFuncionario;
 import static br.com.industria.service.FuncionarioService.imprimirFuncionarios;
+
 
 public class Main {
 
@@ -28,9 +29,21 @@ public class Main {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente"));
 
+        FuncionarioService service = new FuncionarioService(funcionarios);
+//        imprimirFuncionarios(funcionarios);
+//        removerFuncionario(funcionarios, "João");
+//
+//        System.out.println("depois de remover");
+//        imprimirFuncionarios(funcionarios);
 
+
+
+
+
+        System.out.println("-----------------------------------------");
+//
+
+        service.aumentarSalario(funcionarios, new BigDecimal("10"));
         imprimirFuncionarios(funcionarios);
-
-
     }
 }
