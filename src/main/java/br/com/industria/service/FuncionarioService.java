@@ -19,12 +19,6 @@ public class FuncionarioService {
         this.funcionarios = funcionarios;
     }
 
-    public void removerFuncionario(String nome) {
-        funcionarios.removeIf(
-                funcionario -> funcionario.getNome().equalsIgnoreCase(nome)
-        );
-    }
-
 
 
 

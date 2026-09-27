@@ -32,39 +32,52 @@ public class Main {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente"));
 
+        removerFuncionario(funcionarios, "João");
+        System.out.println("---------------------------------------------------------------");
         FuncionarioService service = new FuncionarioService(funcionarios);
-//        imprimirFuncionarios(funcionarios);
-//        removerFuncionario(funcionarios, "João");
-//
-//        System.out.println("depois de remover");
-//        imprimirFuncionarios(funcionarios);
+        imprimirFuncionarios(funcionarios);
 
-//        Map<String, List<Funcionario>> grupos = service.agruparPorFuncao();
-//
-//        for (String funcao : grupos.keySet()) {
-//            System.out.println("Função: " + funcao);
-//            for (Funcionario funcionario : grupos.get(funcao)) {
-//                System.out.println("  - " + funcionario.getNome());
-//            }
-//            System.out.println();
-//        }
+        service.aumentarSalario(funcionarios, new BigDecimal("10") );
+
+        Map<String, List<Funcionario>> grupos = service.agruparPorFuncao();
+
+        for (String funcao : grupos.keySet()) {
+            System.out.println("Função: " + funcao);
+            for (Funcionario funcionario : grupos.get(funcao)) {
+                System.out.println("  - " + funcionario.getNome());
+            }
+            System.out.println();
+        }
+
 
         System.out.println("-----------------------------------------");
 
-//        List<Funcionario> aniversariantes = service.aniversariantes(Month.OCTOBER, Month.DECEMBER);
-//        System.out.println("Aniversariantes de Outubro e Dezembro:");
-//        imprimirFuncionarios(aniversariantes);
+        List<Funcionario> aniversariantes = service.aniversariantes(Month.OCTOBER, Month.DECEMBER);
+        System.out.println("Aniversariantes de Outubro e Dezembro:");
+        imprimirFuncionarios(aniversariantes);
 
-//        service.aniversatiante(funcionarios, 11);
+        System.out.println("---------------------------------------------------------------");
+        service.aniversatiante(funcionarios, 11);
+        System.out.println("---------------------------------------------------------------");
 
-//        Funcionario maisVelho = service.funcionarioMaisVelho();
-//        imprimirFuncionarios(List.of(maisVelho));
-//        List<Funcionario> ordemAlfabetica = service.ordenarPorNome();
-//        imprimirFuncionarios(ordemAlfabetica);
+        Funcionario maisVelho = service.funcionarioMaisVelho();
+        System.out.println("---------------------------------------------------------------");
 
-//        BigDecimal SalarioTotal = service.totalSalarios();
-//        System.out.println("Total de Salarios de Funcionarios: R$ " + Formatador.formatarSalario(SalarioTotal));
+        imprimirFuncionarios(List.of(maisVelho));
+        System.out.println("---------------------------------------------------------------");
 
-       service.imprimirSalarioMinimoFuncionarios();
+        List<Funcionario> ordemAlfabetica = service.ordenarPorNome();
+        imprimirFuncionarios(ordemAlfabetica);
+
+        System.out.println("---------------------------------------------------------------");
+
+        BigDecimal SalarioTotal = service.totalSalarios();
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("Total de Salarios de Funcionarios: R$ " + Formatador.formatarSalario(SalarioTotal));
+
+        System.out.println("---------------------------------------------------------------");
+        service.imprimirSalarioMinimoFuncionarios();
+
+        //TESTE UNITÁRIO FEITO
     }
 }
