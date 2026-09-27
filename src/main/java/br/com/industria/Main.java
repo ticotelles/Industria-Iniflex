@@ -2,11 +2,14 @@ package br.com.industria;
 
 import br.com.industria.model.Funcionario;
 import br.com.industria.service.FuncionarioService;
+import br.com.industria.util.Formatador;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static br.com.industria.service.FuncionarioService.removerFuncionario;
 import static br.com.industria.service.FuncionarioService.imprimirFuncionarios;
@@ -36,14 +39,32 @@ public class Main {
 //        System.out.println("depois de remover");
 //        imprimirFuncionarios(funcionarios);
 
-
-
-
+//        Map<String, List<Funcionario>> grupos = service.agruparPorFuncao();
+//
+//        for (String funcao : grupos.keySet()) {
+//            System.out.println("Função: " + funcao);
+//            for (Funcionario funcionario : grupos.get(funcao)) {
+//                System.out.println("  - " + funcionario.getNome());
+//            }
+//            System.out.println();
+//        }
 
         System.out.println("-----------------------------------------");
-//
 
-        service.aumentarSalario(funcionarios, new BigDecimal("10"));
-        imprimirFuncionarios(funcionarios);
+//        List<Funcionario> aniversariantes = service.aniversariantes(Month.OCTOBER, Month.DECEMBER);
+//        System.out.println("Aniversariantes de Outubro e Dezembro:");
+//        imprimirFuncionarios(aniversariantes);
+
+//        service.aniversatiante(funcionarios, 11);
+
+//        Funcionario maisVelho = service.funcionarioMaisVelho();
+//        imprimirFuncionarios(List.of(maisVelho));
+//        List<Funcionario> ordemAlfabetica = service.ordenarPorNome();
+//        imprimirFuncionarios(ordemAlfabetica);
+
+//        BigDecimal SalarioTotal = service.totalSalarios();
+//        System.out.println("Total de Salarios de Funcionarios: R$ " + Formatador.formatarSalario(SalarioTotal));
+
+       service.imprimirSalarioMinimoFuncionarios();
     }
 }
